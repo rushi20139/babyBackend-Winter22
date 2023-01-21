@@ -122,7 +122,7 @@ else {
   }
 // get-method to get Single user
   @GetMapping("/{userId}") 
-  public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userld){
- return ResponseEntity.ok(this.userService.getUserById(userld));
+  public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId){
+ return ResponseEntity.ok(this.userService.getUserById(userId));
   }
 }
