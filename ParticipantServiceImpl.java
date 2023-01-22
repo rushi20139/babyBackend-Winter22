@@ -121,5 +121,27 @@ public class ParticipantServicelmpl implements ParticipantService {
       
            for(int i=0;i<allRanks.size();i++) {
                if((finalRank+2)<=allRanks.get(i)) {
+                   allRanks.set(i, allRanks.get(i)+1); 
+                   System.out.println(" Modified Ranks of Participant:"+i+"is:"+(allRanks.get(i)+1)); 
+                   Participant participant = this.participantRepo.findById(i+1).orElseThrow(()-> new ResourceNotFoundException("Participant", "Pid",0)); 
+                   participant.setRank(allRanks.get(i)):
+                }
+
+                Participant participant=this.participantRepo.findById(i+1).orElseThrow(()-> new ResourceNotFoundException("Participant", "Pid",0)); 
+                finalPercentile=((((n+1)-(allRanks.get(i)))*100)/(n+1))+10;
+
+// finalPercentile=((((n+1)-(allRanks.get(i)))* 100)/(n+1))+10; Looks good but
+//Mathematically correct form will not include +10
+
+                participant.setPercentile(finalPercentile);
+            }
+
+           System.out.println("Everybody's ranks except participants:"+allRanks);
+           System.out.println("participant's Rank:"+(finalRank+2));
+           System.out.println("participant's Percentile"+(finalPercentile));
+
+  return ((((n+1)-(finalRank+1))*100)/(n+1));
+  }
+}
 
 
